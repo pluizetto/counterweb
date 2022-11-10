@@ -6,7 +6,7 @@ COPY pom.xml /home/app
 RUN mvn -f /home/app/pom.xml clean package
 
 #Deploy stage
-FROM default-route-openshift-image-registry.apps.cluster-7xjv5.7xjv5.sandbox799.opentlc.com/openshift/ubi8-openjdk8-wildfly:24.0
+FROM openshift/ubi8-openjdk8-wildfly:24.0
 COPY --from=build /home/app/target/CounterWebApp.war /opt/wildfly-24.0.0.Final/standalone/deployments/CounterWebApp.war
 
 
